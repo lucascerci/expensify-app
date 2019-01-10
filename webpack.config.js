@@ -8,7 +8,7 @@ module.exports = {
     https:            false,
     disableHostCheck: true
   },
-  entry: './src/app.js',
+  entry: './src/playground/hoc.js',
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js'
