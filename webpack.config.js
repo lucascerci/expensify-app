@@ -3,6 +3,11 @@
 const path = require('path');
 
 module.exports = {
+  devServer: {
+    headers:          { 'Access-Control-Allow-Origin': '*' },
+    https:            false,
+    disableHostCheck: true
+  },
   entry: './src/playground/redux-expensify.js',
   output: {
     path: path.resolve(__dirname, 'public'),
