@@ -19,14 +19,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(ExpenseList);
-
-
-
-//                                 information that we get
-// const ConnectedExpenseList = connect((state) => {
-//     return {
-//         expenses: state.expenses
-//     };
-// })(ExpenseList);
-
-// export default ConnectedExpenseList;
