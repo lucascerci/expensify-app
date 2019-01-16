@@ -37,7 +37,6 @@ test('should generate set text filter object with default', () => {
 });
 
 
-
 test('should generate a sort by amount object', () => {
     const action = sortByAmount();
     expect(action).toEqual({
