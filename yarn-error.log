@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\rickarof\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add enzyme-adapter-react
+  C:\Program Files\nodejs\node.exe C:\Users\rickarof\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add extract-test-webpack-plugin
 
 PATH: 
   C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\OpenVPN\bin;C:\Program Files\PuTTY\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\Brackets\command;C:\xampp\php;C:\Users\rickarof\AppData\Local\atom\bin;C:\Users\rickarof\AppData\Roaming\Composer\vendor\bin;C:\Users\rickarof\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\rickarof\AppData\Roaming\npm;C:\Users\rickarof\AppData\Local\Android\Sdk\tools;C:\Users\rickarof\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\nodejs\
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/enzyme-adapter-react: Not found
+  Error: https://registry.yarnpkg.com/extract-test-webpack-plugin: Not found
       at Request.params.callback [as _callback] (C:\Users\rickarof\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:65894:18)
       at Request.self.callback (C:\Users\rickarof\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:129018:22)
       at Request.emit (events.js:182:13)
@@ -35,21 +35,25 @@ npm manifest:
     "license": "MIT",
     "scripts": {
       "build": "webpack --mode production --watch",
+      "build:prod": "webpack -p --env production",
       "serve": "live-server public/",
       "dev-server": "webpack-dev-server",
-      "test": "jest"
+      "test": "jest --config=jest.config.json"
     },
     "dependencies": {
       "@babel/plugin-proposal-class-properties": "^7.2.3",
       "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
       "@babel/plugin-transform-runtime": "^7.2.0",
       "css-loader": "^2.1.0",
-      "enzyme": "^3.8.0",
+      "enzyme": "3.0.0",
+      "enzyme-adapter-react-16": "1.0.0",
+      "enzyme-to-json": "3.0.1",
       "jest": "^23.6.0",
       "live-server": "^1.2.1",
       "moment": "^2.23.0",
       "node-sass": "^4.11.0",
       "normalize.css": "^8.0.1",
+      "raf": "3.3.2",
       "react": "16.7.0",
       "react-addons-shallow-compare": "^15.6.2",
       "react-dates": "^18.3.1",
@@ -2643,30 +2647,49 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.2.tgz#bdfa735299664dfafd34529ed4f8522a275fea56"
     integrity sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w==
   
-  enzyme@^3.8.0:
-    version "3.8.0"
-    resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.8.0.tgz#646d2d5d0798cb98fdec39afcee8a53237b47ad5"
-    integrity sha512-bfsWo5nHyZm1O1vnIsbwdfhU989jk+squU9NKvB+Puwo5j6/Wg9pN5CO0YJelm98Dao3NPjkDZk+vvgwpMwYxw==
+  enzyme-adapter-react-16@1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.0.0.tgz#e7edd5536743818dcbef336d40d7da59b3a7db8e"
+    integrity sha1-5+3VU2dDgY3L7zNtQNfaWbOn244=
     dependencies:
-      array.prototype.flat "^1.2.1"
-      cheerio "^1.0.0-rc.2"
+      enzyme-adapter-utils "^1.0.0"
+      lodash "^4.17.4"
+      object.assign "^4.0.4"
+      object.values "^1.0.4"
+      prop-types "^15.5.10"
+  
+  enzyme-adapter-utils@^1.0.0:
+    version "1.9.1"
+    resolved "https://registry.yarnpkg.com/enzyme-adapter-utils/-/enzyme-adapter-utils-1.9.1.tgz#68196fdaf2a9f51f31603cbae874618661233d72"
+    integrity sha512-LWc88BbKztLXlpRf5Ba/pSMJRaNezAwZBvis3N/IuB65ltZEh2E2obWU9B36pAbw7rORYeBUuqc79OL17ZzN1A==
+    dependencies:
       function.prototype.name "^1.1.0"
-      has "^1.0.3"
-      is-boolean-object "^1.0.0"
-      is-callable "^1.1.4"
-      is-number-object "^1.0.3"
-      is-string "^1.0.4"
-      is-subset "^0.1.1"
-      lodash.escape "^4.0.1"
-      lodash.isequal "^4.5.0"
-      object-inspect "^1.6.0"
-      object-is "^1.0.1"
       object.assign "^4.1.0"
+      prop-types "^15.6.2"
+      semver "^5.6.0"
+  
+  enzyme-to-json@3.0.1:
+    version "3.0.1"
+    resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.0.1.tgz#16468e2ff3e4db817d84f9df38760abbc322273d"
+    integrity sha512-jE8oHBm3xGGfDoMuwxFvSTSaYvNjMciG0Y8MEPdvEtQIAO6x85FkBu/TOz4YmaPenU0BYEafWpbdkzaitWipBQ==
+    dependencies:
+      lodash "^4.17.4"
+  
+  enzyme@3.0.0:
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.0.0.tgz#94ce364254dc654c4e619b25eecc644bf6481de7"
+    integrity sha1-lM42QlTcZUxOYZsl7sxkS/ZIHec=
+    dependencies:
+      cheerio "^1.0.0-rc.2"
+      function.prototype.name "^1.0.3"
+      is-subset "^0.1.1"
+      lodash "^4.17.4"
+      object-is "^1.0.1"
+      object.assign "^4.0.4"
       object.entries "^1.0.4"
       object.values "^1.0.4"
-      raf "^3.4.0"
-      rst-selector-parser "^2.2.3"
-      string.prototype.trim "^1.1.2"
+      raf "^3.3.2"
+      rst-selector-parser "^2.2.1"
   
   errno@^0.1.3, errno@~0.1.7:
     version "0.1.7"
@@ -2682,7 +2705,7 @@ Lockfile:
     dependencies:
       is-arrayish "^0.2.1"
   
-  es-abstract@^1.10.0, es-abstract@^1.12.0, es-abstract@^1.5.0, es-abstract@^1.5.1, es-abstract@^1.7.0:
+  es-abstract@^1.10.0, es-abstract@^1.12.0, es-abstract@^1.5.1, es-abstract@^1.7.0:
     version "1.13.0"
     resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.13.0.tgz#ac86145fdd5099d8dd49558ccba2eaf9b88e24e9"
     integrity sha512-vDZfg/ykNxQVwup/8E1BZhVzFfBxs9NqMzGcvIJrqg5k2/5Za2bWo40dK2J1pgLngZ7c+Shh8lwYtLGyrwPutg==
@@ -3275,12 +3298,12 @@ Lockfile:
       mkdirp ">=0.5 0"
       rimraf "2"
   
-  function-bind@^1.0.2, function-bind@^1.1.1:
+  function-bind@^1.1.1:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
     integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
   
-  function.prototype.name@^1.1.0:
+  function.prototype.name@^1.0.3, function.prototype.name@^1.1.0:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/function.prototype.name/-/function.prototype.name-1.1.0.tgz#8bd763cc0af860a859cc5d49384d74b932cd2327"
     integrity sha512-Bs0VRrTz4ghD8pTmbJQD1mZ8A/mN0ur/jGz+A6FBxPDUPkm1tNfF6bhTYPA7i7aF4lZJVr+OXTNNrnnIl58Wfg==
@@ -3896,11 +3919,6 @@ Lockfile:
     dependencies:
       binary-extensions "^1.0.0"
   
-  is-boolean-object@^1.0.0:
-    version "1.0.0"
-    resolved "https://registry.yarnpkg.com/is-boolean-object/-/is-boolean-object-1.0.0.tgz#98f8b28030684219a95f375cfbd88ce3405dff93"
-    integrity sha1-mPiygDBoQhmpXzdc+9iM40Bd/5M=
-  
   is-buffer@^1.1.5:
     version "1.1.6"
     resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
@@ -4041,11 +4059,6 @@ Lockfile:
     dependencies:
       is-extglob "^2.1.1"
   
-  is-number-object@^1.0.3:
-    version "1.0.3"
-    resolved "https://registry.yarnpkg.com/is-number-object/-/is-number-object-1.0.3.tgz#f265ab89a9f445034ef6aff15a8f00b00f551799"
-    integrity sha1-8mWrian0RQNO9q/xWo8AsA9VF5k=
-  
   is-number@^2.1.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/is-number/-/is-number-2.1.0.tgz#01fcbbb393463a548f2f466cce16dece49db908f"
@@ -4112,11 +4125,6 @@ Lockfile:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
     integrity sha1-EtSj3U5o4Lec6428hBc66A2RykQ=
-  
-  is-string@^1.0.4:
-    version "1.0.4"
-    resolved "https://registry.yarnpkg.com/is-string/-/is-string-1.0.4.tgz#cc3a9b69857d621e963725a24caeec873b826e64"
-    integrity sha1-zDqbaYV9Yh6WNyWiTK7shzuCbmQ=
   
   is-subset@^0.1.1:
     version "0.1.1"
@@ -4862,20 +4870,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
     integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
   
-  lodash.escape@^4.0.1:
-    version "4.0.1"
-    resolved "https://registry.yarnpkg.com/lodash.escape/-/lodash.escape-4.0.1.tgz#c9044690c21e04294beaa517712fded1fa88de98"
-    integrity sha1-yQRGkMIeBClL6qUXcS/e0fqI3pg=
-  
   lodash.flattendeep@^4.4.0:
     version "4.4.0"
     resolved "https://registry.yarnpkg.com/lodash.flattendeep/-/lodash.flattendeep-4.4.0.tgz#fb030917f86a3134e5bc9bec0d69e0013ddfedb2"
     integrity sha1-+wMJF/hqMTTlvJvsDWngAT3f7bI=
-  
-  lodash.isequal@^4.5.0:
-    version "4.5.0"
-    resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
-    integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
   
   lodash.mergewith@^4.6.0:
     version "4.6.1"
@@ -5559,11 +5557,6 @@ Lockfile:
       define-property "^0.2.5"
       kind-of "^3.0.3"
   
-  object-inspect@^1.6.0:
-    version "1.6.0"
-    resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.6.0.tgz#c70b6cbf72f274aab4c34c0c82f5167bf82cf15b"
-    integrity sha512-GJzfBZ6DgDAmnuaM3104jR4s1Myxr3Y3zfIyN4z3UdqN69oSRacNK8UhnobDdC+7J2AHCjGwxQubNJfE70SXXQ==
-  
   object-is@^1.0.1:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/object-is/-/object-is-1.0.1.tgz#0aa60ec9989a0b3ed795cf4d06f62cf1ad6539b6"
@@ -5581,7 +5574,7 @@ Lockfile:
     dependencies:
       isobject "^3.0.0"
   
-  object.assign@^4.1.0:
+  object.assign@^4.0.4, object.assign@^4.1.0:
     version "4.1.0"
     resolved "https://registry.yarnpkg.com/object.assign/-/object.assign-4.1.0.tgz#968bf1100d7956bb3ca086f006f846b3bc4008da"
     integrity sha512-exHJeq6kBKj58mqGyTQ9DFvrZC/eR6OwxzoM9YRoGBqrXYonaFyGiFMuc9VZrXf7DarreEwMpurG3dd+CNyW5w==
@@ -6224,7 +6217,14 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.0.tgz#7ded8dfbf7879dcc60d0a644ac6754b283ad17ef"
     integrity sha512-sluvZZ1YiTLD5jsqZcDmFyV2EwToyXZBfpoVOmktMmW+VEnhgakFHnasVph65fOjGPTWN0Nw3+XQaSeMayr0kg==
   
-  raf@^3.4.0:
+  raf@3.3.2:
+    version "3.3.2"
+    resolved "https://registry.yarnpkg.com/raf/-/raf-3.3.2.tgz#0c13be0b5b49b46f76d6669248d527cf2b02fe27"
+    integrity sha1-DBO+C1tJtG921maSSNUnzysC/ic=
+    dependencies:
+      performance-now "^2.1.0"
+  
+  raf@^3.3.2:
     version "3.4.1"
     resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
     integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
@@ -6775,7 +6775,7 @@ Lockfile:
       hash-base "^3.0.0"
       inherits "^2.0.1"
   
-  rst-selector-parser@^2.2.3:
+  rst-selector-parser@^2.2.1:
     version "2.2.3"
     resolved "https://registry.yarnpkg.com/rst-selector-parser/-/rst-selector-parser-2.2.3.tgz#81b230ea2fcc6066c89e3472de794285d9b03d91"
     integrity sha1-gbIw6i/MYGbInjRy3nlChdmwPZE=
@@ -7345,15 +7345,6 @@ Lockfile:
     dependencies:
       is-fullwidth-code-point "^2.0.0"
       strip-ansi "^4.0.0"
-  
-  string.prototype.trim@^1.1.2:
-    version "1.1.2"
-    resolved "https://registry.yarnpkg.com/string.prototype.trim/-/string.prototype.trim-1.1.2.tgz#d04de2c89e137f4d7d206f086b5ed2fae6be8cea"
-    integrity sha1-0E3iyJ4Tf019IG8Ia17S+ua+jOo=
-    dependencies:
-      define-properties "^1.1.2"
-      es-abstract "^1.5.0"
-      function-bind "^1.0.2"
   
   string_decoder@^1.0.0, string_decoder@^1.1.1:
     version "1.2.0"
