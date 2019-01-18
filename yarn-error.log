@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\rickarof\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add extract-test-webpack-plugin
+  C:\Program Files\nodejs\node.exe C:\Users\rickarof\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add express
 
 PATH: 
   C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\OpenVPN\bin;C:\Program Files\PuTTY\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\Brackets\command;C:\xampp\php;C:\Users\rickarof\AppData\Local\atom\bin;C:\Users\rickarof\AppData\Roaming\Composer\vendor\bin;C:\Users\rickarof\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\rickarof\AppData\Roaming\npm;C:\Users\rickarof\AppData\Local\Android\Sdk\tools;C:\Users\rickarof\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\nodejs\
@@ -14,17 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/extract-test-webpack-plugin: Not found
-      at Request.params.callback [as _callback] (C:\Users\rickarof\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:65894:18)
-      at Request.self.callback (C:\Users\rickarof\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:129018:22)
-      at Request.emit (events.js:182:13)
-      at Request.<anonymous> (C:\Users\rickarof\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:129990:10)
-      at Request.emit (events.js:182:13)
-      at IncomingMessage.<anonymous> (C:\Users\rickarof\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:129912:12)
-      at Object.onceWrapper (events.js:273:13)
-      at IncomingMessage.emit (events.js:187:15)
-      at endReadableNT (_stream_readable.js:1094:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  Error: EPERM: operation not permitted, scandir 'C:\Users\rickarof\Desktop\expensify-app\node_modules\@types'
 
 npm manifest: 
   {
@@ -48,6 +38,7 @@ npm manifest:
       "enzyme": "3.0.0",
       "enzyme-adapter-react-16": "1.0.0",
       "enzyme-to-json": "3.0.1",
+      "extract-text-webpack-plugin": "^4.0.0-beta.0",
       "jest": "^23.6.0",
       "live-server": "^1.2.1",
       "moment": "^2.23.0",
@@ -996,6 +987,16 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.2.0.tgz#e86b819c602cf8821ad637413698f1dec021847a"
     integrity sha1-6GuBnGAs+IIa1jdBNpjx3sAhhHo=
   
+  ajv@^5.0.0:
+    version "5.5.2"
+    resolved "https://registry.yarnpkg.com/ajv/-/ajv-5.5.2.tgz#73b5eeca3fab653e3d3f9422b341ad42205dc965"
+    integrity sha1-c7Xuyj+rZT49P5Qis0GtQiBdyWU=
+    dependencies:
+      co "^4.6.0"
+      fast-deep-equal "^1.0.0"
+      fast-json-stable-stringify "^2.0.0"
+      json-schema-traverse "^0.3.0"
+  
   ajv@^6.1.0, ajv@^6.5.5:
     version "6.6.2"
     resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.6.2.tgz#caceccf474bf3fc3ce3b147443711a24063cc30d"
@@ -1244,7 +1245,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
     integrity sha1-7GphrlZIDAw8skHJVhjiCJL5Zyo=
   
-  async@^2.1.4, async@^2.5.0:
+  async@^2.1.4, async@^2.4.1, async@^2.5.0:
     version "2.6.1"
     resolved "https://registry.yarnpkg.com/async/-/async-2.6.1.tgz#b245a23ca71930044ec53fa46aa00a3e87c6a610"
     integrity sha512-fNEiL2+AZt6AlAw/29Cr0UDe4sRAHCpEHh54WMz+Bb7QfNcFw4h3loofyJpLeQs4Yx7yuqu/2dLgM5hKOs6HlQ==
@@ -3005,6 +3006,16 @@ Lockfile:
       snapdragon "^0.8.1"
       to-regex "^3.0.1"
   
+  extract-text-webpack-plugin@^3.0.2:
+    version "3.0.2"
+    resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.2.tgz#5f043eaa02f9750a9258b78c0a6e0dc1408fb2f7"
+    integrity sha512-bt/LZ4m5Rqt/Crl2HiKuAl/oqg0psx1tsTLkvWbJen1CtD+fftkZhMaQ9HOtY2gWsl2Wq+sABmMVi9z3DhKWQQ==
+    dependencies:
+      async "^2.4.1"
+      loader-utils "^1.1.0"
+      schema-utils "^0.3.0"
+      webpack-sources "^1.0.1"
+  
   extsprintf@1.3.0:
     version "1.3.0"
     resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.3.0.tgz#96918440e3041a7a414f8c52e3c574eb3c3e1e05"
@@ -3014,6 +3025,11 @@ Lockfile:
     version "1.4.0"
     resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
     integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
+  
+  fast-deep-equal@^1.0.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-1.1.0.tgz#c053477817c86b51daa853c81e059b733d023614"
+    integrity sha1-wFNHeBfIa1HaqFPIHgWbcz0CNhQ=
   
   fast-deep-equal@^2.0.1:
     version "2.0.1"
@@ -4674,6 +4690,11 @@ Lockfile:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz#bb867cfb3450e69107c131d1c514bab3dc8bcaa9"
     integrity sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==
+  
+  json-schema-traverse@^0.3.0:
+    version "0.3.1"
+    resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-0.3.1.tgz#349a6d44c53a51de89b40805c5d5e59b417d3340"
+    integrity sha1-NJptRMU6Ud6JtAgFxdXlm0F9M0A=
   
   json-schema-traverse@^0.4.1:
     version "0.4.1"
@@ -6863,6 +6884,13 @@ Lockfile:
       loose-envify "^1.1.0"
       object-assign "^4.1.1"
   
+  schema-utils@^0.3.0:
+    version "0.3.0"
+    resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.3.0.tgz#f5877222ce3e931edae039f17eb3716e7137f8cf"
+    integrity sha1-9YdyIs4+kx7a4DnxfrNxbnE3+M8=
+    dependencies:
+      ajv "^5.0.0"
+  
   schema-utils@^0.4.4:
     version "0.4.7"
     resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.4.7.tgz#ba74f597d2be2ea880131746ee17d0a093c68187"
@@ -8001,7 +8029,7 @@ Lockfile:
       ansi-colors "^3.0.0"
       uuid "^3.3.2"
   
-  webpack-sources@^1.1.0, webpack-sources@^1.3.0:
+  webpack-sources@^1.0.1, webpack-sources@^1.1.0, webpack-sources@^1.3.0:
     version "1.3.0"
     resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-1.3.0.tgz#2a28dcb9f1f45fe960d8f1493252b5ee6530fa85"
     integrity sha512-OiVgSrbGu7NEnEvQJJgdSFPl2qWKkWq5lHMhgiToIiN9w34EBnjYzSYs+VbL5KoYiLNtFFa7BZIKxRED3I32pA==
